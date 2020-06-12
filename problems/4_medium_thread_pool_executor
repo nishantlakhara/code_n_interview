@@ -1,0 +1,20 @@
+**Problem 4: Create your own custom thread pool executor?**
+It is a very common problem asked in java interviews and thus we should know how we can go about imlementing this solution.
+
+Difficulty level: Medium
+Note: This is a java specific problem. 
+
+Tags: #multithreding #java-specific #java
+
+
+=====================================================
+
+**Solution Problem 4: Create your own custom thread pool executor?**
+
+There can be multiple solutions to this. But the simplest i would suggest is to use blocking queue with worker threads.
+
+
+Link: https://makeinjava.com/custom-thread-pool-java-example-without-executor-framework/
+
+
+

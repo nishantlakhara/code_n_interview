@@ -1,0 +1,96 @@
+vishnu jethliya
+May 27, edited
+Master , plz provide solution for this
+I am bit stuck
+https://www.hackerrank.com/challenges/sherlock-and-anagrams/problem?h_l=interview&playlist_slugs[]=interview-preparation-kit&playlist_slugs[]=dictionaries-hashmaps
+
+**Problem 6 Sherlock and Anagram Challenge - hacker Rank challenge**
+
+Two strings are anagrams of each other if the letters of one string can be rearranged to form the other string. Given a string, find the number of pairs of substrings of the string that are anagrams of each other.
+
+For example s = mom
+, the list of all anagrammatic pairs is (m,m) , (mo, om) at positions [(0),(2)]  ,  [(0,1),(1,2)] respectively.
+
+Hacker rank link: https://www.hackerrank.com/challenges/sherlock-and-anagrams/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=dictionaries-hashmaps
+
+Tags: #strings #anagram #arrays #mathematics
+
+
+**Solution Problem 6 Sherlock and Anagram Challenge - hacker Rank challenge**
+
+First some mathematics: Say you want to find all the pairs that can be formed of the anagram strings.
+Example : 3 strings say xyz,yzx,zxy are present in a large string which are anagrams.
+So total pairs that can be formed of these 3 strings are 
+1. (xyz, yzx) 
+2. (xyz, zxy)
+3. (yzx, zxy)
+So total of 3 strings can be formed. This can be easily derived from the combination formula nCr. In our case it is 3C2 i.e (3*2)/(2*1) = n(n-1)/2
+
+
+Now try forming the solution.
+
+1. Find all substrings of the given string.
+One way is first get all substring of size 1, then 2, then 3 .... and so on till n.
+Then get all substring of size 2
+Then get all substring of size 3 and so on till n-1
+
+2. Whenever you generate a substring, sort it and store in a map with the frequency count. (We are sorting to find the anagram pairs).
+
+Example say string "mo" comes, sorted = "m0",
+ update map {"mo": 1}
+then string "om" comes, sorted = "mo",
+ update map {"mo" : 2}
+
+3. Intialize total result to 0.
+Iterate over the whole map and get count of pairs by formula n(n-1)/2 and add it to total result. 
+For above case in {"mo":2}, it would be 2(1)/2 = 1. So one pair of ("om", "mo")
+
+4. Return total result.
+
+
+
+Time complexities : 
+
+1. The time complexity of the above solution is 
+Finding substrings (O(n^2)) - (n-1)+(n-2)+.....1 = n(n-1)/2 = O(n^2)
+
+Sorting a substring (O(n^lgn)) - assuming n is length of largest string.
+So total time complexity  = O(n^3 lgn)
+
+
+2. The above solution can be optimized by using a fixed length tuple of 26 chars since a string can be formed of a-z only.
+In that case instead of sorting you would create unique signature of each string. Anagrams would have same signature and can be used as a key in the above map or dictionary.
+
+A sample signature say of wor "mo" can be shown as a tuple.
+Note: A tuple is hashable in python language. 
+
+tuple = (0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0)
+Mapping [A B C D E F G H I J K L M N O P Q R S T U V W X Y Z]
+
+The time complexity of this solution is better than above as forming this tuple is better than sorting and takes O(n) time.
+So total time complexity is O(n^3)
+
+
+Tags: #strings #anagram #arrays #mathematics #O_n_power_3_complexity #O_n_power_3_lgn_complexity #o_n_power_2_complexity #tabulation #preprocessing
+
+Solution links:
+https://github.com/nishantlakhara/Practice/blob/master/python_scripts/hackerrank/sherlockandanagram/sherlock_and_anagram.py
+
+There is one more optimized solution with 26 * N * N time complexity. Please read that as well.
+https://codereview.stackexchange.com/questions/151229/sherlock-and-anagrams
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

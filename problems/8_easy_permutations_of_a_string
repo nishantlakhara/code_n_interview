@@ -1,0 +1,50 @@
+**Problem 8 Print all permutations of a string.**
+
+For example,
+xyz have a total of 6 permutations = xyz, xzy, yxz, yzx, zxy, zyx
+
+Difficulty level : Easy
+
+Tags: #permutation #easy #strings #recursion #backtracking
+
+This problem is one of the candidate of recursive backtracking algorithms.
+Backtracking allows us to deal with situations in which a raw brute-force approach would explode into an impossible number of choices to consider. Backtracking is a sort of refined brute force. At each node, we eliminate choices that are obviously not possible and proceed to recursively check only those that have potential. This way, at each depth of the tree, we mitigate the number of choices to consider in the future.
+
+Suppose you get to a bad leaf. You can backtrack to continue the search for a good leaf by revoking your most recent choice, and trying out the next option in that set of options. If you run out of options, revoke the choice that got you here, and try another choice at that node. If you end up at the root with no options left, there are no good leaves to be found.
+
+To know the difference between recursion and backtracking: 
+https://stackoverflow.com/questions/26670757/difference-between-backtracking-and-recursion
+
+
+===================================================================
+
+**Solution Problem 8 Print all permutations of a string**
+
+Since the solution is pretty small, pasting python code.
+
+def permutation(list, start, end):
+    '''This prints all the permutations of a given list
+       it takes the list,the starting and ending indices as input'''
+    if (start == end):
+        print list
+    else:
+        for i in range(start, end + 1):
+            list[start], list[i] = list[i], list[start]  # The swapping
+            permutation(list, start + 1, end)
+            list[start], list[i] = list[i], list[start]  # Backtracking
+
+
+permutation([1, 2, 3], 0, 2)  # The first index of a list is zero
+
+Time complexity : The time complexity of this solution is O(n!).
+To understand this we need to analyse the tree, 
+At every level the permute method is called n * (n-1) * (n-2) * ..... 1 = n!
+
+
+
+Solution links on recursive backtracking and permutation problem along with other problems: 
+https://brilliant.org/wiki/recursive-backtracking/
+https://stackoverflow.com/questions/41627749/time-complexity-of-permutation-function
+
+
+Tags: #permutation #easy #strings #recursion #backtracking

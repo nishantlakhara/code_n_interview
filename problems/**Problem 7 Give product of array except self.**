@@ -1,0 +1,48 @@
+**Problem 7 Give product of array except self.**
+
+Given an array nums of n integers where n > 1,  return an array output such that output[i] is equal to the product of all the elements of nums except nums[i].
+Note: Division is not allowed.
+
+Example:
+
+Input:  [1,2,3,4]
+Output: [24,12,8,6]
+
+Difficulty level: Easy
+
+Tags: #maths #arrays #product #easy
+
+
+============================================================================
+
+
+**Solution Problem 7 Give product of array except self.**
+
+Instead of dividing the product of all the numbers in the array by the number at a given index to get the corresponding product, we can make use of the product of all the numbers to the left and all the numbers to the right of the index. Multiplying these two individual products would give us the desired result as well.
+
+**Approach 1: O(n) space complexity** 
+
+A[i] = L[i] * R[i] = Answer array
+L[i] = Product of all elements to left of array element at position i
+R[i] = Product of all elements to right of array element at position i
+
+
+Time complexity: We are iterating the array thrice and populating the left, right and answer arrays.
+Thus the complexity is O(n)
+
+Space complexity: We are using extra space for left and right array.
+Thus space complexity is O(n)
+
+
+**Approach 2: O(1) space complexity.**
+
+1. Initialize A[i] with product of all elements to the left of element i
+2. Generate products of all elements to the right on the fly and multiply with A[i] to get total answer A[i].
+
+Time complexity : O(n)
+Space complexity : O(1)
+
+
+Solution link: https://leetcode.com/problems/product-of-array-except-self/solution/
+
+Tags: #maths #arrays #product #O_n_complexity #preprocessing #space_complexity #bottom_up 

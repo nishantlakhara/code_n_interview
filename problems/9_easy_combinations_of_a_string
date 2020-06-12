@@ -1,0 +1,39 @@
+**Problem 9: Print all the combinations of a string.**
+
+For example, 
+abc has a total of 7 combinations - [a, ab, abc, ac, b, bc, c]
+
+Difficulty level : Easy
+
+Tags: #recursion #backtracking #combination
+
+An overview on recursive backtracking before you start.
+https://brilliant.org/wiki/recursive-backtracking/
+
+=============================================
+**Solution Problem 9: Print all the combinations of a string.**
+
+we can start with a single character and then continue to add a character to combinations we have seen so far. 
+
+Simple code
+```
+void combine(String instr, StringBuffer outstr, int index)
+{
+    for (int i = index; i < instr.length(); i++)
+    {
+        outstr.append(instr.charAt(i));
+        System.out.println(outstr);
+        combine(instr, outstr, i + 1);
+        outstr.deleteCharAt(outstr.length() - 1);
+    }
+} 
+
+combine("abc", new StringBuffer(), 0);
+```
+
+Time complexity: There are 2^n - 1 total combinations so time complexity = O(2^n -1) OR O(2^n)
+
+Tags: #recursion #backtracking #combination #O_2_power_n_complexity
+
+Solution link:
+http://www.mytechinterviews.com/combinations-of-a-string

@@ -1,0 +1,59 @@
+**Problem 5: Rod cutting problem**
+Suppose you have a rod of length n, and you want to cut up the rod and sell the pieces in a way that maximizes the total amount of money you get.  A piece of length i is worth pi dollars.
+
+length i = 1  2  3  4  5  6  7  8  9  10
+price pi = 1  5  8  9  10 17 17 20 24 30
+
+Example : Cutting a rod of length 4 would maximise profit when cut in 2 parts of length 2 each.
+
+Profit = 2*5 = 10
+
+Difficulty: Medium
+
+Hints: 
+An overview on dynamic programming: 
+https://www.educative.io/courses/grokking-dynamic-programming-patterns-for-coding-interviews/m2G1pAq0OO0
+
+
+Tags: #dynamic_programming #medium
+
+===================================
+
+**Solution Problem 5: Rod cutting problem**
+
+This is a classic dynamic programming problem.
+This problem satisfies the requirement that a dynamic programming problem expects.
+
+1. Optimum substructure.
+Any problem has optimal substructure property if its overall optimal solution can be constructed from the optimal solutions of its subproblems.
+
+cutRod(n) = max(price[i] + cutRod(n-i)) for all i in {1 .. n}
+
+2. Overlapping subproblems.
+Subproblems are smaller versions of the original problem.
+If you create a recursive tree of the above structure , you would notice that cutRod(i) might repeat several times during computation. 
+
+
+There are two ways to solve this problem:
+
+1. Top down approach (Memoization) : Whenever we solve a sub-problem, we cache its result so that we don’t end up solving it repeatedly if it’s called multiple times.
+
+2. Bottom up approach: 
+Tabulation is the opposite of the top-down approach and avoids recursion. In this approach, we solve the problem “bottom-up” (i.e. by solving all the related sub-problems first). This is typically done by filling up an n-dimensional table. Based on the results in the table, the solution to the top/original problem is then computed.
+
+
+
+Video Link: Animated explanation of rod cutting
+https://www.youtube.com/watch?v=ElFrskby_7M
+
+Lecture: 
+https://web.stanford.edu/class/archive/cs/cs161/cs161.1168/lecture12.pdf
+
+Code: The below link contains both top-down (memoization technique) and bottom-up approaches
+https://www.codesdope.com/course/algorithms-rod-cutting/
+https://www.quora.com/How-do-I-show-that-the-memoized-solution-to-the-rod-cutting-problem-is-O-n-2
+https://www.geeksforgeeks.org/cutting-a-rod-dp-13/
+
+
+Tags: #dynamic_programming #rod_cutting #memoization #tabulation #recursion #optimal_substructure #overlapping_subproblems
+
