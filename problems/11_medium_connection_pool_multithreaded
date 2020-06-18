@@ -1,0 +1,47 @@
+**Problem 11 : Connection pooling in multithreaded environment in java?**
+
+Create a connection pool in java with some fixed size.
+Initialize all the connections at once.
+
+This is a mutithreaded environment where many threads are trying to get the connection at the same time
+so there will be synchronization issues.
+It would have 2 methods - getConnection and releaseConnection.
+
+Difficulty: Medium
+
+Tags: #connection_pool #java #multithreading #synchronization
+
+=====================================================================================
+
+**Solution Problem 11 : Connection pooling in multithreaded environment in java?**
+
+There are multiple problems to this solution.
+
+One solution could be:
+1. Create a blocking queue of given size inside pool class as the holding datastructure.
+2. getConnection - blocking queue take call
+3. releaseConnection - add connection back to the pool in blocking queue.
+
+Sample Thread call:
+```
+MyConnection connection = null;
+try {
+    connection = pool.getConnection()
+    //Use connection to do transaction
+} finally {
+    //Internally it calls pool.releaseConnection(this);
+    if(connection != null) {
+        connection.close();
+    }
+}
+```
+
+Code solution Links:
+Custom Blocking queue: https://www.javacodemonk.com/how-will-you-implement-a-blocking-queue-in-java-044ee033
+Custom Connection pool: https://github.com/nishantlakhara/Practice/blob/master/src/main/java/design/connectionpool/ConnectionPoolMain.java
+
+
+
+==========
+Other miscellaneous implementations:
+https://github.com/daohongJian/hbase-connection-pool/blob/master/src/main/java/hbase/tool/HbaseConnectionPool.java

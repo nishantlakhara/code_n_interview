@@ -1,5 +1,0 @@
-**Problem  : Connection pooling in multithreaded environment in java?**
-
-
-
-https://github.com/daohongJian/hbase-connection-pool/blob/master/src/main/java/hbase/tool/HbaseConnectionPool.java

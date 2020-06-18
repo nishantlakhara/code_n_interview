@@ -1,0 +1,70 @@
+**Problem 10 : Find minimum edit distance between two strings**
+Given two strings str1 and str2 and below operations that can performed on str1. Find minimum number of edits (operations) required to convert ‘str1’ into ‘str2’.
+
+Insert
+Remove
+Replace
+
+All of the above operations are of equal cost i.e 1.
+If replace cost is considered as delete + insert, its cost is 2 otherwise 1.
+
+Difficulty level: Medium
+
+Tags: #medium #dynamic_programming #strings #distance #recursion #memoization #tabulation
+
+==========================================================================================
+
+**Solution 10 : Find minimum edit distance between two strings**
+
+1. Optimum substructure
+Any problem has optimal substructure property if its overall optimal solution can be constructed from the optimal solutions of its subproblems.
+
+**Initialization:**
+```
+indexA = str1 length
+indexB = str2 length
+
+calculateEditDistance(str1, str2, indexA, indexB)
+```
+
+**Recursive procedure**
+```
+calculateEditDistance(str1, str2, indexA, indexB):
+    if(indexA = 0):
+        return indexB
+
+    if(indexB = 0):
+        return indexA
+
+    if (strA.charAt(indexA - 1) == strB.charAt(indexB - 1) {
+      return calculateEditDistance(strA, strB, indexA - 1, indexB - 1);
+    }
+
+    return min(
+      1 + calculateEditDistance(strA, strB, indexA, indexB - 1)     // insertion
+      1 + calculateEditDistance(strA, strB, indexA - 1, indexB)     // removal
+      2 + calculateEditDistance(strA, strB, indexA - 1, indexB - 1) // substitution
+    )
+```
+
+2. Overlapping subproblems.
+Subproblems are smaller versions of the original problem.
+If you create a recursive tree of the above structure,
+you would notice that calculate EditDistance call with same parameters would repeat several times during computation.
+
+
+There are two ways to solve this problem:
+
+1. Top down approach (Memoization) : Whenever we solve a sub-problem, we cache its result so that we don’t end up solving it repeatedly if it’s called multiple times.
+2. Bottom up approach:
+Tabulation is the opposite of the top-down approach and avoids recursion. In this approach, we solve the problem “bottom-up” (i.e. by solving all the related sub-problems first). This is typically done by filling up an n-dimensional table. Based on the results in the table, the solution to the top/original problem is then computed.
+
+Time complexity of brute force algorithm = O(3^n) since for every call you have 3 recursive calls of delete, insert and replace.
+Time complexity with memoization and tabulation = O(m*n). Space complexity = O(m*n) since there are m*n total combinations of m and n.
+Can be more optimized with lesser space complexity. Please check solution links.
+
+Solution links:
+https://www.geeksforgeeks.org/edit-distance-dp-5/
+https://medium.com/@dakota.lillie/an-intro-to-dynamic-programming-pt-ii-edit-distance-ceed0b12fe6d
+
+Tags: #medium #dynamic_programming #strings #distance #recursion #memoization #tabulation #O_n_power_2_complexity #O_3_power_n_complexity #O_m_n_complexity
