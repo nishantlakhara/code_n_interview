@@ -1,0 +1,82 @@
+**Problem 12 : Print all positive integer solutions to the equation a^3 + b^3 = c^3 + d^3 where a,b,c,d are integers between 1 to 1000?**
+^ indicates power function.
+
+Difficulty level: Medium
+
+Tags: #equation #pairs #combination #math
+
+Taken from 'Cracking the coding interview book'.
+Link: https://www.amazon.in/gp/product/0984782869/ref=as_li_tl?ie=UTF8&camp=3638&creative=24630&creativeASIN=0984782869&linkCode=as2&tag=codenintervie-21&linkId=ed35bca57445f518ef8637acedbb36d1
+
+===================================================================================
+**Solution Problem 12 : Print all positive integer solutions to the equation a^3 + b^3 = c^3 + d^3 where a,b,c,d are integers between 1 to 1000?**
+
+Lets solve this step by step. First try using brute force and then optimize later.
+1. Brute force approach:
+```
+n=1000
+for a from 1 to n:
+    for b from 1 to n:
+        for c from 1 to n:
+            for d from 1 to n:
+                if a^3 + b^3 = c^3 + d^3
+                    return a,b,c,d
+                    break //break out of d's loop - A quick fix but still runtime will be O(n^4)
+```
+Time complexity = O(n^4)
+
+2. One level optimization over brute force
+Applying simple math, d = (a^3 + b^3 - c^3)^(1/3) i.e cube root.
+```
+n=1000
+for a from 1 to n:
+    for b from 1 to n:
+        for c from 1 to n:
+            d = pow(a^3 + b^3 - c^3, 1/3)
+            if a^3 + b^3 == c^3 + d^3 //Validate that the value works.
+                return a,b,c,d
+```
+Time complexity = O(n^3)
+
+3. Reduce duplicated work using hashmap or hashtable
+We are computing all c,d pairs with all a,b pairs again and again.
+We can compute once and store this in a hashmap
+
+```
+n=1000
+for c from 1 to n:
+    for d from 1 to n:
+        result = c^3 + d^3
+        append(c, d) to list at value map[result]
+
+for a from 1 to n:
+    for b from 1 to n:
+        result = a^3 + b^3
+        list = map.get(result)
+        for each pair in list:
+            print a,b,pair
+```
+Time complexity = O(n^2)
+Space complexity = O(n^2)
+
+4. Since all a,b,c,d have a specific range 1 to n and we have all (c,d) pairs we don't need to generate (a,b) pairs
+```
+n=1000
+for c from 1 to n:
+    for d from 1 to n:
+        result = c^3 + d^3
+        append(c, d) to list at value map[result]
+
+for each result, list in map:
+    for each pair1 in list:
+        for each pair2 in list:
+            print pair1, pair2
+```
+Time complexity = O(n^2)
+Space complexity = O(n^2)
+Also no generation of a,b pairs and result again.
+
+Book link: https://www.amazon.in/gp/product/0984782869/ref=as_li_tl?ie=UTF8&camp=3638&creative=24630&creativeASIN=0984782869&linkCode=as2&tag=codenintervie-21&linkId=ed35bca57445f518ef8637acedbb36d1
+
+
+
