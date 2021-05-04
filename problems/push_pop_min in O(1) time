@@ -1,0 +1,8 @@
+**Problem: Design a stack which in addition to push and pop has a function min which returns the minimum element.
+Push, Pop and Min should run in O(1) time.**
+
+=======================================================================================
+
+ **Solution Problem: Design a stack which in addition to push and pop has a function min which returns the minimum element.
+ Push, Pop and Min should run in O(1) time.**
+

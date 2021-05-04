@@ -3,7 +3,7 @@
 
 Difficulty level: Medium
 
-Tags: #equation #pairs #combination #math
+Tags: #equation #pairs #combination #math #medium
 
 Taken from 'Cracking the coding interview book'.
 Link: https://www.amazon.in/gp/product/0984782869/ref=as_li_tl?ie=UTF8&camp=3638&creative=24630&creativeASIN=0984782869&linkCode=as2&tag=codenintervie-21&linkId=ed35bca57445f518ef8637acedbb36d1
@@ -75,6 +75,10 @@ for each result, list in map:
 Time complexity = O(n^2)
 Space complexity = O(n^2)
 Also no generation of a,b pairs and result again.
+
+
+Tags: #equation #pairs #combination #math #medium #O_n_power_2_complexity #hashmap
+
 
 Book link: https://www.amazon.in/gp/product/0984782869/ref=as_li_tl?ie=UTF8&camp=3638&creative=24630&creativeASIN=0984782869&linkCode=as2&tag=codenintervie-21&linkId=ed35bca57445f518ef8637acedbb36d1
 

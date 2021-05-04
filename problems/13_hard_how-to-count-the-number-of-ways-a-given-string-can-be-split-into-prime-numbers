@@ -1,0 +1,96 @@
+One of our subscribers 'Alok Dubey' asked this problem on prime numbers.
+
+**Problem 13: Count the number of ways a given string can be split into prime numbers.**
+Given a numeric string str, the task is to count the number of ways the given string can be split, such that each segment is a prime number. Since the answer can be large, return the answer modulo 109 + 7.
+
+Note: A split that contains numbers with leading zeroes will be invalid and the initial string does not contain leading zeroes.
+
+Input: str = “3175”
+Output: 3
+Explanation:
+There are 3 ways to split this string into prime numbers which are (31, 7, 5), (3, 17, 5), (317, 5).
+
+Input: str = “11373”
+Output: 6
+Explanation:
+There are 6 ways to split this string into prime numbers which are (11, 3, 7, 3), (113, 7, 3), (11, 37, 3), (11, 3, 73), (113, 73) and (11, 373).
+
+Difficulty level: Hard
+
+Tags: #prime_numbers #number_system #combinations #dynamic_programming #memoization #tabulation #hard
+
+============================================================================================================
+**Solution Problem 13: Count the number of ways a given string can be split into prime numbers.**
+
+**Some mathematics first**
+
+**Prime number**
+A prime number is a whole number greater than 1,
+which is only divisible by 1 and itself. First few prime numbers are : 2 3 5 7 11 13 17 19 23
+```
+    if (n%2==0) return false;
+    //if not, then just check the odds
+    for(int i=3;i<=Math.sqrt(n);i+=2) {
+        if(n%i==0)
+            return false;
+    }
+    return true;
+```
+Time complexity: O(sqrt(n))
+
+
+**Sieve of Eratosthenes algorithm**
+In mathematics, the sieve of Eratosthenes is an ancient algorithm for finding all prime numbers up to any given limit.
+```
+algorithm Sieve of Eratosthenes is
+    input: an integer n > 1.
+    output: all prime numbers from 2 through n.
+
+    let A be an array of Boolean values, indexed by integers 2 to n,
+    initially all set to true.
+
+    for i = 2, 3, 4, ..., not exceeding √n do
+        if A[i] is true
+            for j = i2, i2+i, i2+2i, i2+3i, ..., not exceeding n do
+                A[j] := false
+
+    return all i such that A[i] is true.
+```
+Time complexity: O(n log(log n))
+Wiki Link: https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
+
+**Solution**
+1. Build a sieve of prime numbers using sieve of eratosthenes algorithm.
+We will use it as a cache of prime numbers. In dynamic programming problems, this technique is called as memoization.
+Time complexity = O(n log(log n))
+
+2. Build a recursive procedure to count the number of ways.
+    a. Start recursing from ending index of the given string and consider every suffix up to 6 digits (given that the prime number must be in the range of [1, 106)] and check if it is a prime number or not.
+        Use sieve to check if it is the prime number. It is a dynamic programming solution and the technique we are using is memoization.
+    b. If the suffix doesn’t contain a leading zero and it is a prime number, then recursively call the function to count the ways for the remaining string and add to the total count.
+    c. When the index reaches 0, we reach the base case and return 1 to consider current splits as a valid count.
+    d. Take mod of the count at each iteration and return the count at the end.
+Time complexity = O(n)
+
+Total Time complexity = O(n + n log(log n))
+Space complexity = O(n)
+
+Solution link:
+https://www.geeksforgeeks.org/count-of-ways-to-split-a-given-number-into-prime-segments/
+
+Tags: #prime_numbers #number_system #combinations #dynamic_programming #memoization #tabulation #O_log_log_n_complexity
+#O_sqrt_n_complexity #sieve_of_eratosthenes
+
+Tags: #prime_numbers #number_system #combinations #dynamic_programming #memoization #tabulation #hard #O_n_log_log_n_complexity
+
+
+**Miscellaneous read**
+Why we traverse till square_root(n) only to find if number is prime
+If a number n is not a prime, it can be factored into two factors a and b:
+
+n = a * b --------------------------1
+n = sqrt(n) * sqrt(n) --------------2
+
+Now a and b can't be both greater than the square root of n,since then the product a * b would be greater than sqrt(n) * sqrt(n) = n.
+So in any factorization of n,at least one of the factors must be smaller than the square root of n,and if we can't find any factors less than or equal to the square root, n must be a prime.
+

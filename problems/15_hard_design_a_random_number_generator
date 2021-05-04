@@ -1,0 +1,95 @@
+**Problem 15 : Design a random number generator**
+
+A sequence of random numbers R1, ... Ri must fulfill two statistical properties:
+
+**1. Uniformity**
+Consequence of this property: If the interval [0,1] is divided into n classes, or sub intervals of equal length, the expected number of observations in each interval is N/n, where N is the total number of observations
+
+**2. Independence**
+Consequence of this property: The probability of observing a value in a particular interval is independent of the previous value drawn
+
+Tags: #design #random_numbers #random #probability_distribution #uniformity #independence #hard
+
+Difficulty Level: Hard
+
+====================================================================================================
+
+**Solution Problem 15: Design a random number generator**
+Tags: #design #random_numbers #random #probability_distribution
+#uniformity #independence #pseudo_random #true_random #prng #trng #modulus
+#lcg #linear_congruential_generator #hard
+
+Random numbers have traditionally
+been used for a variety of purposes throughout history, ranging from gambling
+dice games, coin flipping to being the foundation of many security protocols and
+functions. But is rolling a die, picking a card out of a shuffled deck, or flipping a
+coin truly random? In order to be truly random, the die or coin should land on
+all possible values equally, and can not have any obvious patterns in a sequence.
+
+A sequence of random numbers R1, ... Ri must fulfill two statistical properties:
+**1. Uniformity**
+Consequence of this property: If the interval [0,1] is divided into n classes, or sub intervals of equal length, the expected number observations in each interval is N/n, where N is the total number of observations
+
+**2. Independence**
+Consequence of this property: The probability of observing a value in a particular interval is independent of the previous value drawn
+
+
+Other properties that random number generators should have:
+**1. Efficiency**
+The generator should be fast and efficient.
+
+**2. Reproducibility**
+The generator should be able to generate the same stream of random numbers repeatedly. This is mainly for testing and debugging purposes.
+
+**3. Long Cycle Length**
+The generator should take a very long time before numbers start to repeat.
+
+**Random number generators can be divided into two categories:**
+**1. Pseudo random number generators :**
+As the word ‘pseudo’ suggests, pseudo-random numbers are not random in the way you might expect, at least not if you're used to dice rolls or lottery tickets.
+Essentially, PRNGs are algorithms that use mathematical formulae or simply precalculated tables to produce sequences of numbers that appear random.
+A good example of a PRNG is the linear congruential method.
+It is considered ”Pseudo” because generating numbers using a known method disqualifies the potential of true randomness. Computers with no access to outside ”true randomness” phenomena can only run deterministic algorithms, thus rendering it at most a pseudo random number generator.
+
+**2. True random numbers:**
+This is also known as Hardware Random Number Generation as external hardware is needed to extract random numbers from a physical phenomena, rather than a deterministic algorithm on a computer. Such devices use atmospheric noise such as thermal noise and other stochastic natural processes. A True
+random number generator uses a transducer to convert aspects of physical phenomena to a signal, then uses an amplifier to increase the amplitude of the random fluctuations to a measurable level.
+An analog to digital converter is used to convert the output into a binary digit 0 or 1. A true series of random numbers are attained after repeated sampling.
+
+**Solution to the problem for interview purpose:**
+Linear congruential method for random number generation
+- To produce a sequence of integers, X1, X2, . . . between 0 and m-1
+  by following a recursive relationship:
+  Xi+1 = (aXi + c) mod m, i = 0, 1, 2...
+  X0 is the seed
+- The selection of the values for a, c, m, and X0 drastically affects the
+statistical properties and the cycle length.
+The random integers are being generated in the range [0,m-1], and
+to convert the integers to random numbers:
+Ri = Xi/m , i = 1, 2...
+
+Example: Use X0 = 27, a = 17, c = 43, and m = 100.
+The Xi and Ri values are:
+X1 = (17 ∗ 27 + 43) mod 100 = 502 mod 100 = 2, R1 = 0.02;
+X2 = (17 ∗ 2 + 43) mod 100 = 77 mod 100 = 77, R2 = 0.77;
+X3 = (17 ∗ 77 + 43) mod 100 = 1352 mod 100 = 52R3 = 0.52;
+Notice that the numbers generated assume values only from the set
+I = 0, 1/m, 2/m, . . . ..,(m − 1)/m
+because each Xi is an integer in the set 0,1,2,. . . .,m-1
+Thus each Ri is discrete on I, instead of continuous on interval [0,1]
+
+Generally speaking, do not use the lower order bits from linear congruential generators as they are not very random. The congruential PRNG has the disadvantage that it is not free of sequential correlations on successive calls. They fall into planes. If k random numbers at a time are used to plot points in k-dimensional space, then the points lie on k-1 dimensional planes rather than filling up all k-space.
+There are at most m1/k planes, or fewer (which is even worse) if a,c, or M are not well chosen. If you take k numbers together, the correlation can be as high as 2^(−M/k).
+
+Links:
+https://www.eg.bucknell.edu/~xmeng/Course/CS6337/Note/master/node40.html
+http://koclab.cs.ucsb.edu/teaching/cren/project/2018/Lau+Yu.pdf
+
+Other misc links to learn:
+https://en.wikipedia.org/wiki/Random_number_generation
+https://www.random.org/randomness/#:~:text=RANDOM.ORG%20is%20a%20true,generates%20randomness%20via%20atmospheric%20noise.&text=When%20discussing%20single%20numbers%2C%20a,%2C%20i.e.%2C%20a%20uniform%20distribution.
+https://www.eg.bucknell.edu/~xmeng/Course/CS6337/Note/master/node36.html
+
+
+
+

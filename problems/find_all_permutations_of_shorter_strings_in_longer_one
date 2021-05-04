@@ -1,0 +1,81 @@
+**Problem : Given a smaller string s and a bigger string b, design an algorithm to find all permutations of the shorter strings in the longer one. Print the location of each permutation.**
+
+Difficulty level: Medium
+
+Tags: #permutation #strings
+
+========================================================================
+
+**Solution Problem : Given a smaller string s1 and a bigger string s2, design an algorithm to find all permutations of the shorter strings in the longer one. Print the location of each permutation.**
+
+**Approach 1: Brute force**
+Time complexity : O(n!). We match all the permutations of the short string s1,
+ of length n, with s2. Here, n refers to the length of s1.
+
+Space complexity : O(n^2).
+ The depth of the recursion tree is n(n refers to the length of the short string s1).
+ Every node of the recursion tree contains a string of max length n.
+
+
+**Approach 2: Sorting**
+The idea behind this approach is that one string will be a permutation of another string only
+if both of them contain the same characters the same number of times.
+One string x is a permutation of other string y only if sorted(x)=sorted(y).
+
+Time complexity: O(l1 log(l1) + (l2-l1)l1 log(l1)), l1 - short string, l1 - long string.
+Space complexity: O(l1), Would be clear when you see code in solution link.
+
+**Approach 3: Using Hashmap**
+As discussed above, one string will be a permutation of another string only if both of them contain
+the same charaters with the same frequency. We can consider every possible substring in the long string
+s2 of the same length as that of s1 and check the frequency of occurence of the characters appearing in the two.
+If the frequencies of every letter match exactly, then only s1's permutation can be a substring of s2.
+
+O(L1) - Creating hashmap for s1
+O(L1*(L2-L1)) - Creating hashmap for every window of length L1 in L2.
+O(26*(L2-L1)) - Matching every key in hashmap for each window of length L1 in L2.
+
+Time complexity : O(L1 + (26+L1)*(L2-L1)), L1 - length of short string, L2 - length of larger string.
+Space complexity: O(1)
+
+**Approach 4: Using Array of fixed length**
+Instead of making use of a special HashMap datastructure just to store the frequency of occurence of characters,
+we can use a simpler array data structure to store the frequencies. Given strings contains only lowercase alphabets ('a' to 'z').
+So we need to take an array of size 26.The rest of the process remains the same as the last approach.
+
+Time complexity : O(L1 + (26+L1)*(L2-L1)), L1 - length of short string, L2 - length of larger string.
+Space complexity: O(1)
+
+**Approach 5: Single hashmap instead of generating new hashmap for each window.**
+Instead of generating the hashmap afresh for every window considered in s2s2,
+we can create the hashmap just once for the first window in s2.
+Then, later on when we slide the window,
+we know that we remove one preceding character and add a new succeeding character to the new window considered.
+Thus, we can update the hashmap by just updating the indices associated with those two characters only.
+Again, for every updated hashmap, we compare all the elements of the hashmap for equality to get the required result.
+
+Time complexity : O(L1 + 26*(L2-L1)), L1 - length of short string, L2 - length of larger string.
+Space complexity: O(1)
+
+
+**Approach 6: Using count variable.**
+The last approach can be optimized, if instead of comparing all the elements of the hashmaps for every updated s2maps2map corresponding to every window of s2s considered,
+we keep a track of the number of elements which were already matching in the earlier hashmap and update just the count of matching elements when we shift the window towards the right.
+To do so, we maintain a countcount variable, which stores the number of characters(out of the 26 alphabets),
+which have the same frequency of occurence in s1 and the current window in s2.
+When we slide the window, if the deduction of the last element and the addition of the new element
+leads to a new frequency match of any of the characters, we increment the countcount by 1.
+If not, we keep the countcount intact. But, if a character whose frequency was the same earlier(prior to addition and removal)
+is added, it now leads to a frequency mismatch which is taken into account by decrementing the same countcount variable.
+If, after the shifting of the window, the countcount evaluates to 26, it means all the characters match in frequency totally.
+So, we return a True in that case immediately.
+
+Time complexity: O(l1+(l2-l1)), l1 - length of shorter string, l2 - length of larger string.
+Space complexity: O(1)
+
+Tags: #permutation #strings #arrays #map #hashmap #counter #sorting #tabulation
+
+Solution link:
+https://leetcode.com/articles/short-permutation-in-a-long-string/
+
+

@@ -1,0 +1,63 @@
+**Problem 13: Design a traffic signal.**
+ In a traffic signal, the state of the signal changes all the time.
+ The red signal which indicates to stop, the green which indicates to go and so on.
+ In this situation, the state of the signal changes from one state to another.
+ If we implement this scenario in the traditional approach, then it is very clumsy and a maintenance nightmare.
+
+Try to design the code in such a way that it is maintainable.
+
+Difficulty : Medium
+
+Must read:
+https://www.edureka.co/blog/solid-principles-in-java/
+
+
+
+Tags: #design #design_patterns #loosely_coupled #modular #maintainable #medium
+
+===================================================================================================
+**Solution Problem 13: Design a traffic signal.**
+
+There can be multiple ways that the traffic signal can be designed.
+While designing the system, we should try to apply basic SOLID principles to the working solution.
+
+
+**Solution 1:**
+State is a behavioral design pattern that lets an object alter its behavior when its internal state changes.
+It appears as if the object changed its class.
+
+State design pattern:
+https://refactoring.guru/design-patterns/state
+
+Solution link:
+https://www.codeproject.com/Tips/856978/Illustrating-the-State-Pattern-with-a-Very-Basic-E
+
+==================================
+
+**Solution 2:**
+Mediator is a behavioral design pattern that lets you reduce chaotic dependencies between objects.
+The pattern restricts direct communications between the objects and forces them to collaborate only via a mediator object.
+
+Mediator pattern:
+https://refactoring.guru/design-patterns/mediator
+
+Solution link:
+https://codepumpkin.com/mediator-design-pattern/
+
+===================================
+
+Tags: #design #design_patterns #loosely_coupled #modular #maintainable #medium #mediator_design_pattern #state_design_pattern
+
+
+Book links on design patterns
+
+Design Patterns: Elements of Reusable Object-Oriented Software (Addison-Wesley Professional Computing Series)
+https://amzn.to/2Buns54
+https://www.flipkart.com/design-patterns-elements-reusable-object-oriented-software-1/p/itmecc2e6tqqtncx?pid=9789332555402&lid=LSTBOK9789332555402FZFHZP&marketplace=FLIPKART&srno=s_1_1&otracker=search&otracker1=search&fm=SEARCH&iid=50565ae7-42f7-4682-a05d-e48afdb4e012.9789332555402.SEARCH&ppt=sp&ppn=sp&ssid=41slejdocw0000001592924548086&qH=f1cf7cec303bdc15
+
+Head first design patterns
+https://www.amazon.in/gp/product/0596007124/ref=as_li_tl?ie=UTF8&camp=3638&creative=24630&creativeASIN=0596007124&linkCode=as2&tag=codenintervie-21&linkId=ed12c1afb192735e4dac10c386620c0e
+
+Head first object oriented analysis and design
+https://www.amazon.in/gp/product/8184042213/ref=as_li_tl?ie=UTF8&camp=3638&creative=24630&creativeASIN=8184042213&linkCode=as2&tag=codenintervie-21&linkId=263e75e74c851ac542b21a7332753007
+https://www.flipkart.com/head-first-object-oriented-analysis-design-1/p/itmdz6feezmnafty?pid=9788184042214&lid=LSTBOK9788184042214D8IAIP&marketplace=FLIPKART&cmpid=content_book_8003060057_u_8965229628_gmc_pla&tgi=sem,1,G,11214002,u,,,395332127672,,,,c,,,,,,,&ef_id=CjwKCAjwxev3BRBBEiwAiB_PWGYpp23aJS7vB_KnIcAyeC6vZyTJu6_l9EuOuoEuCi3hTkCfJ93DlhoCUjYQAvD_BwE:G:s&s_kwcid=AL!739!3!395332127672!!!u!295092701166!&gclid=CjwKCAjwxev3BRBBEiwAiB_PWGYpp23aJS7vB_KnIcAyeC6vZyTJu6_l9EuOuoEuCi3hTkCfJ93DlhoCUjYQAvD_BwE

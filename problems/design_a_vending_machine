@@ -1,4 +1,1177 @@
-**Problem  : Design a vending machine in java?
+**Problem  : Design a vending machine in java?**
 
+You need to design a Vending Machine which
+ Accepts coins of 1,5,10,25 Cents i.e. penny, nickel, dime, and quarter.
+ Allow user to select products Coke(25), Pepsi(35), Soda(45)
+ Allow user to take refund by canceling the request.
+ Return selected product and remaining change if any
+ Allow reset operation for vending machine supplier.
 
+Tags: #medium #design #interface #vending_machine #design_patterns #uml
+
+Difficulty level: Medium
+
+**Books for object oriented analysis and design:**
+Head first object oriented analysis and design: https://amzn.to/2DwVLtJ
+UML for Java Programmers: https://amzn.to/3lSpvT1
+
+**For Advanced Learning:**
+Head first design patterns: https://www.flipkart.com/head-first-design-patterns-10th-anniversary-covers-java-8-brain-friendly-guide/p/itmc6fa32ec0ef91
+Design Patterns: https://www.amazon.in/Design-Patterns-Erich-Gamma/dp/9332555400/ref=sr_1_1?dchild=1&keywords=design+patterns&qid=1599282679&s=books&sr=1-1
+Designing data intensive applications: https://amzn.to/3lV54Vq
+
+-----------------------------------------------------------------------------------------------------
+**Solution Problem  : Design a vending machine in java?**
+
+Detailed design and code link:
 https://javarevisited.blogspot.com/2016/06/design-vending-machine-in-java.html
+
+Tags: #medium #design #interface #vending_machine #design_patterns #uml
+
+**Books for object oriented analysis and design:**
+Head first object oriented analysis and design: https://amzn.to/2DwVLtJ
+UML for Java Programmers: https://amzn.to/3lSpvT1
+
+**For Advanced Learning:**
+Head first design patterns: https://www.flipkart.com/head-first-design-patterns-10th-anniversary-covers-java-8-brain-friendly-guide/p/itmc6fa32ec0ef91
+Design Patterns: https://www.amazon.in/Design-Patterns-Erich-Gamma/dp/9332555400/ref=sr_1_1?dchild=1&keywords=design+patterns&qid=1599282679&s=books&sr=1-1
+Designing data intensive applications: https://amzn.to/3lV54Vq
+
+===========================================================================
+
+Full content:
+Javarevisited
+
+Blog about Java, Programming, Spring, Hibernate, Interview Questions, Books and Online Course Recommendations from Udemy, Pluralsight, Coursera, etc
+
+
+
+Homecore javaspringhibernatecollectionsmultithreadingdesign patternsinterview questionscodingdata structureOOPjava 8booksAbout MeJava CertificationsJDBCjsp-servletJSONSQLLinuxCoursesonline resourcesjvm-internalsRESTEclipsejQueryJava IOJava XML
+SATURDAY, JUNE 4, 2016
+Design a Vending Machine in Java - Interview Question
+Pause
+Unmute
+Fullscreen
+VDO.AI
+
+
+
+How do you design a Vending Machine in Java? is one of the good Java interview questions mostly asked at Senior level Java developer Interviews. In a typical coding interview, you will be given a problem statement to develop a vending machine and within a limited time, usually, 2 to 3 hours you need to produce a design document, working code, and unit test in Java. One of the key advantages of such Java interviews is that you can test many essential skills or a candidate in one go. In order to complete the design, coding, and unit testing of a Vending machine, a candidate needs to be really good in all three departments.
+
+By the way, this kind of real-world problem is also a good exercise to improve your object-oriented analysis and design skills (see here), which is very important if you want to become a good application developer.
+
+By designing a vending machine in Java or any other object-oriented language, you not only learn basics e.g. Encapsulation, Polymorphism, or Inheritance but also learns subtle details of how to use an abstract class and interface (see here) while solving a problem or designing an application.
+
+Usually, this kind of problem also gives you an opportunity to utilize Java design patterns, as in this problem we will be using the Factory method pattern for creating different types of Vending Machine. I have talked about this question when I shared 20 software design questions in Java (here), and after that, I receive a lot of feedback to provide a solution for that question.
+
+This two-part series of posts will provide a solution to the Vending machine problem in Java. By the way, this problem can be solved in a different way, and you should try to do that before looking into the solution given here. This is also an opportunity to revisit SOLID and OOPS design principles (see here) and get ready to use them in your code. You'll find many of them are applicable when you design a vending machine in Java.
+
+Btw, If you are serious about learning design patterns and principles, I suggest you take a look at the Design Patterns in Java course on Udemy.  This course covers both SOLID design principles like Open Closed and Liskov substitution, and all-important Object Oriented design patterns like Decorator, Observer, Chain of Responsibility, and much more.
+
+
+
+
+
+
+Problem Statement
+You need to design a Vending Machine which
+ Accepts coins of 1,5,10,25 Cents i.e. penny, nickel, dime, and quarter.
+ Allow user to select products Coke(25), Pepsi(35), Soda(45)
+ Allow user to take refund by canceling the request.
+ Return selected product and remaining change if any
+ Allow reset operation for vending machine supplier.
+
+The requirement statement is the most important part of the problem. You need to read problem statement multiple times to get a high-level understanding of the problem and what are you trying to solve. Usually, requirements are not very clear and you need to make a list of your own by reading through problem statement.
+
+I like point based requirement because it's easy to track. Some of the requirement are also implicit but it's better to make it explicit in your list e.g. In this problem, vending machine should not accept a request if it doesn't have sufficient change to return.
+
+Unfortunately, there is not many book or course which teach you these skills, you need to develop them by yourself by doing some real world work. Though, two of the book which helped me to improve by object-oriented analysis and design skills are Head First Object Oriented Design and Analysis 1st edition by Brett D. McLaughlin. One of the best book if you don't have much experience in object oriented programming.
+
+Java Software Design Problem - Vending Machine Solution
+
+
+Another book which is very good on developing application and system design skill is UML for Java Programmers by Robert C. Martin, one of my favorite author. I have read several books of him e.g. Clean Code, Clean Coder and a book on software development using Agile. He is one of the best in teaching OOP concept.
+
+How to design a Vending Machine in Java
+
+
+This book has got a similar problem about designing a coffee machine. So, if you want to practice more or try your object oriented design skill, you can refer to that problem. It's also a very good learning exercise.
+
+Solution and Coding
+My implementation of Java Vending Machine has following classes and interfaces :
+
+VendingMachine
+It defines the public API of vending machine, usually all high-level functionality should go in this class
+
+VendingMachineImpl
+Sample implementation of Vending Machine
+
+VendingMachineFactory
+A Factory class to create different kinds of Vending Machine
+
+Item
+Java Enum to represent Item served by Vending Machine
+
+Inventory
+Java class to represent an Inventory, used for creating case and item inventory inside Vending Machine
+
+Coin
+Another Java Enum to represent Coins supported by Vending Machine
+
+Bucket
+A parameterized class to hold two objects. It's kind of Pair class.
+
+NotFullPaidException
+An Exception thrown by Vending Machine when a user tries to collect an item, without paying the full amount.
+
+NotSufficientChangeException
+Vending Machine throws this exception to indicate that it doesn't have sufficient change to complete this request.
+
+SoldOutExcepiton
+Vending Machine throws this exception if the user request for a product which is sold out.
+
+How to design vending machine in Java
+
+
+
+How to design Vending Machine in Java
+Here is the complete code of Vending Machine in Java, make sure to test this code, and let me know if you face any issue.
+
+
+VendingMachine.java
+The public API of vending machine, usually all high-level functionality should go in this class
+
+package vending;
+
+import java.util.List;
+
+/**
+  * Decleare public API for Vending Machine
+  * @author Javin Paul
+  */
+public interface VendingMachine {
+    public long selectItemAndGetPrice(Item item);
+    public void insertCoin(Coin coin);
+    public List<Coin> refund();
+    public Bucket<Item, List<Coin>> collectItemAndChange();
+    public void reset();
+}
+
+
+VendingMachineImpl.java
+A sample implementation of VendingMachine interface represents a real world Vending Machine , which you see in your office, bus stand, railway station and public places.
+
+package vending;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+/**
+  * Sample implementation of Vending Machine in Java
+  * @author Javin Paul
+  */
+public class VendingMachineImpl implements VendingMachine {
+    private Inventory<Coin> cashInventory = new Inventory<Coin>();
+    private Inventory<Item> itemInventory = new Inventory<Item>();
+    private long totalSales;
+    private Item currentItem;
+    private long currentBalance;
+
+    public VendingMachineImpl(){
+        initialize();
+    }
+
+    private void initialize(){
+        //initialize machine with 5 coins of each denomination
+        //and 5 cans of each Item
+        for(Coin c : Coin.values()){
+            cashInventory.put(c, 5);
+        }
+
+        for(Item i : Item.values()){
+            itemInventory.put(i, 5);
+        }
+
+    }
+
+   @Override
+    public long selectItemAndGetPrice(Item item) {
+        if(itemInventory.hasItem(item)){
+            currentItem = item;
+            return currentItem.getPrice();
+        }
+        throw new SoldOutException("Sold Out, Please buy another item");
+    }
+
+    @Override
+    public void insertCoin(Coin coin) {
+        currentBalance = currentBalance + coin.getDenomination();
+        cashInventory.add(coin);
+    }
+
+    @Override
+    public Bucket<Item, List<Coin>> collectItemAndChange() {
+        Item item = collectItem();
+        totalSales = totalSales + currentItem.getPrice();
+
+        List<Coin> change = collectChange();
+
+        return new Bucket<Item, List<Coin>>(item, change);
+    }
+
+    private Item collectItem() throws NotSufficientChangeException,
+            NotFullPaidException{
+        if(isFullPaid()){
+            if(hasSufficientChange()){
+                itemInventory.deduct(currentItem);
+                return currentItem;
+            }
+            throw new NotSufficientChangeException("Not Sufficient change in
+                                                    Inventory");
+
+        }
+        long remainingBalance = currentItem.getPrice() - currentBalance;
+        throw new NotFullPaidException("Price not full paid, remaining : ",
+                                          remainingBalance);
+    }
+
+    private List<Coin> collectChange() {
+        long changeAmount = currentBalance - currentItem.getPrice();
+        List<Coin> change = getChange(changeAmount);
+        updateCashInventory(change);
+        currentBalance = 0;
+        currentItem = null;
+        return change;
+    }
+
+    @Override
+    public List<Coin> refund(){
+        List<Coin> refund = getChange(currentBalance);
+        updateCashInventory(refund);
+        currentBalance = 0;
+        currentItem = null;
+        return refund;
+    }
+
+
+    private boolean isFullPaid() {
+        if(currentBalance >= currentItem.getPrice()){
+            return true;
+        }
+        return false;
+    }
+
+
+    private List<Coin> getChange(long amount) throws NotSufficientChangeException{
+        List<Coin> changes = Collections.EMPTY_LIST;
+
+        if(amount > 0){
+            changes = new ArrayList<Coin>();
+            long balance = amount;
+            while(balance > 0){
+                if(balance >= Coin.QUARTER.getDenomination()
+                            && cashInventory.hasItem(Coin.QUARTER)){
+                    changes.add(Coin.QUARTER);
+                    balance = balance - Coin.QUARTER.getDenomination();
+                    continue;
+
+                }else if(balance >= Coin.DIME.getDenomination()
+                                 && cashInventory.hasItem(Coin.DIME)) {
+                    changes.add(Coin.DIME);
+                    balance = balance - Coin.DIME.getDenomination();
+                    continue;
+
+                }else if(balance >= Coin.NICKLE.getDenomination()
+                                 && cashInventory.hasItem(Coin.NICKLE)) {
+                    changes.add(Coin.NICKLE);
+                    balance = balance - Coin.NICKLE.getDenomination();
+                    continue;
+
+                }else if(balance >= Coin.PENNY.getDenomination()
+                                 && cashInventory.hasItem(Coin.PENNY)) {
+                    changes.add(Coin.PENNY);
+                    balance = balance - Coin.PENNY.getDenomination();
+                    continue;
+
+                }else{
+                    throw new NotSufficientChangeException("NotSufficientChange,
+                                       Please try another product");
+                }
+            }
+        }
+
+        return changes;
+    }
+
+    @Override
+    public void reset(){
+        cashInventory.clear();
+        itemInventory.clear();
+        totalSales = 0;
+        currentItem = null;
+        currentBalance = 0;
+    }
+
+    public void printStats(){
+        System.out.println("Total Sales : " + totalSales);
+        System.out.println("Current Item Inventory : " + itemInventory);
+        System.out.println("Current Cash Inventory : " + cashInventory);
+    }
+
+
+    private boolean hasSufficientChange(){
+        return hasSufficientChangeForAmount(currentBalance - currentItem.getPrice());
+    }
+
+    private boolean hasSufficientChangeForAmount(long amount){
+        boolean hasChange = true;
+        try{
+            getChange(amount);
+        }catch(NotSufficientChangeException nsce){
+            return hasChange = false;
+        }
+
+        return hasChange;
+    }
+
+    private void updateCashInventory(List change) {
+        for(Coin c : change){
+            cashInventory.deduct(c);
+        }
+    }
+
+    public long getTotalSales(){
+        return totalSales;
+    }
+
+}
+
+
+VendingMachineFactory.java
+A Factory class to create different kinds of Vending Machine
+
+package vending;
+
+/**
+  * Factory class to create instance of Vending Machine, this can be extended to create instance of
+  * different types of vending machines.
+  * @author Javin Paul
+  */
+public class VendingMachineFactory {
+    public static VendingMachine createVendingMachine() {
+        return new VendingMachineImpl();
+    }
+}
+
+
+Item.java
+Java Enum to represent Item served by Vending Machine
+
+package vending;
+/**
+  * Items or products supported by Vending Machine.
+  * @author Javin Paul
+  */
+public enum Item{
+    COKE("Coke", 25), PEPSI("Pepsi", 35), SODA("Soda", 45);
+
+    private String name;
+    private int price;
+
+    private Item(String name, int price){
+        this.name = name;
+        this.price = price;
+    }
+
+    public String getName(){
+        return name;
+    }
+
+    public long getPrice(){
+        return price;
+    }
+}
+
+
+Coin.java
+Another Java Enum to represent Coins supported by Vending Machine
+
+package vending;
+
+/**
+  * Coins supported by Vending Machine.
+  * @author Javin Paul
+  */
+public enum Coin {
+    PENNY(1), NICKLE(5), DIME(10), QUARTER(25);
+
+    private int denomination;
+
+    private Coin(int denomination){
+        this.denomination = denomination;
+    }
+
+    public int getDenomination(){
+        return denomination;
+    }
+}
+
+Inventory.java
+A Java class to represent an Inventory, used for creating case and item inventory inside Vending Machine.
+
+package vending;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+  * An Adapter over Map to create Inventory to hold cash and
+  * Items inside Vending Machine
+  * @author Javin Paul
+  */
+public class Inventory<T> {
+    private Map<T, Integer> inventory = new HashMap<T, Integer>();
+
+    public int getQuantity(T item){
+        Integer value = inventory.get(item);
+        return value == null? 0 : value ;
+    }
+
+    public void add(T item){
+        int count = inventory.get(item);
+        inventory.put(item, count+1);
+    }
+
+    public void deduct(T item) {
+        if (hasItem(item)) {
+            int count = inventory.get(item);
+            inventory.put(item, count - 1);
+        }
+    }
+
+    public boolean hasItem(T item){
+        return getQuantity(item) > 0;
+    }
+
+    public void clear(){
+        inventory.clear();
+    }
+
+    public void put(T item, int quantity) {
+        inventory.put(item, quantity);
+    }
+}
+
+
+Bucket.java
+A parameterized utility class to hold two objects.
+
+package vending;
+/**
+  * A parameterized utility class to hold two different object.
+  * @author Javin Paul
+  */
+public class Bucket<E1, E2> {
+    private E1 first;
+    private E2 second;
+
+    public Bucket(E1 first, E2 second){
+        this.first = first;
+        this.second = second;
+    }
+
+    public E1 getFirst(){
+        return first;
+    }
+
+    public E2 getSecond(){
+        return second;
+    }
+}
+
+
+NotFullPaidException.java
+An Exception, thrown by Vending Machine when a user tries to collect an item, without paying the full amount.
+
+package vending;
+public class NotFullPaidException extends RuntimeException {
+    private String message;
+    private long remaining;
+
+    public NotFullPaidException(String message, long remaining) {
+        this.message = message;
+        this.remaining = remaining;
+    }
+
+    public long getRemaining(){
+        return remaining;
+    }
+
+    @Override
+    public String getMessage(){
+        return message + remaining;
+    }
+
+}
+
+
+NotSufficientChangeException.java
+Vending Machine throws this exception to indicate that it doesn't have sufficient change to complete this request.
+
+package vending;
+public class NotSufficientChangeException extends RuntimeException {
+    private String message;
+
+    public NotSufficientChangeException(String string) {
+        this.message = string;
+    }
+
+    @Override
+    public String getMessage(){
+        return message;
+    }
+
+}
+
+
+SoldOutException.java
+The Vending Machine throws this exception if the user request for a product which is sold out
+
+package vending;
+public class SoldOutException extends RuntimeException {
+    private String message;
+
+    public SoldOutException(String string) {
+        this.message = string;
+    }
+
+    @Override
+    public String getMessage(){
+        return message;
+    }
+
+}
+
+That's all in this first part of how to design a vending machine in Java. In this part, we have solved the problem by creating all the classes and writing all code, but unit test and design document are still pending, which you will see in the second part of this article.
+
+If you want you can try to run this problem by creating the Unit test, or maybe make it an application by using a thread and then use a different thread to act as the user. You can also read UML for Java Programmers by Robert C. Martin in the meantime.
+
+Further Learning
+Design Pattern Library
+From 0 to 1: Design Patterns - 24 That Matter - In Java
+Java Design Patterns - The Complete Masterclass
+
+
+
+
+x
+By javin paul at June 04, 2016
+Email This
+
+BlogThis!
+
+Share to Twitter
+
+Share to Facebook
+Labels: Coding problems , core java interview question , design patterns
+36 comments :
+Anonymous said...
+Your getChange() method does not work fine, you just check if the inventory have coin and don't care about quantity of each coin in inventory.
+Let i assume that price of COKE is 21, I select COKE and insert a QUARTER, vm return to me 4 PENNY, I do it one more time, at this case NotSufficientChangeException should be throw.
+
+Code:
+long price = vm.selectItemAndGetPrice(Item.COKE);
+System.out.println("Price of COKE:" + price);
+vm.insertCoin(Coin.QUARTER);
+Bucket> bucket = vm.collectItemAndChange();
+System.out.println("[Return] " + bucket);
+
+vm.selectItemAndGetPrice(Item.COKE);
+vm.insertCoin(Coin.QUARTER);
+bucket = vm.collectItemAndChange();
+System.out.println("[Return] " + bucket);
+
+((VendingMachineImpl)vm).printStats();
+
+Your result:
+Price of COKE:21
+[Return] First: COKE, Second: [PENNY, PENNY, PENNY, PENNY]
+[Return] First: COKE, Second: [PENNY, PENNY, PENNY, PENNY]
+Total Sales : 42
+Current Item Inventory :
+- COKE : 3
+- SODA : 5
+- PEPSI : 5
+
+Current Cash Inventory :
+- PENNY : 0
+- NICKLE : 5
+- DIME : 5
+- QUARTER : 7
+
+
+June 8, 2016 at 12:38 AM
+javin paul said...
+@unknown, good catch, in fact this is the reason why one of the unit test fail in the second part. Btw, can you fix the problem? What we need to change in the getChange() method? or else, I'll fix it.
+
+June 8, 2016 at 5:13 AM
+Anonymous said...
+We need to solve the problem "Coin change with limited number of coins". And I dont know how to solve this right now. Do you have any ideal?
+One more thing in your solution, should the insertCoin() method put the coin to the inventory intermediately??? So I put 5 PENNY, I dont select any item and I refund. I receive 1 NICKLE!
+
+June 8, 2016 at 7:11 PM
+Anonymous said...
+Within a limited time, I will use greedy algorithm and code something like below:
+
+private List getChange(long amount) throws NotSufficientChangeException {
+List changes = new ArrayList<>();
+Inventory changeInventory = new Inventory();
+if (amount > 0) {
+long balance = amount;
+List inventory = cashInventory.getAll();
+Collections.sort(inventory, new Comparator() {
+
+@Override
+public int compare(Coin o1, Coin o2) {
+return o2.getDenomination() - o1.getDenomination();
+}
+});
+while (balance > 0) {
+boolean isContinue = false;
+for (int i = 0; i < inventory.size(); i++) {
+if (balance >= inventory.get(i).getDenomination()
+&& cashInventory.hasItem(inventory.get(i), changeInventory.getQuantity(inventory.get(i)) + 1)) {
+balance -= inventory.get(i).getDenomination();
+changeInventory.add(inventory.get(i));
+isContinue = true;
+break;
+}
+}
+if (!isContinue) {
+break;
+}
+}
+
+if (balance != 0) {
+throw new NotSufficientChangeException("Not sufficient change, please try another product!");
+}
+
+for (Coin c : changeInventory.getAll()) {
+for (int i = 0; i < changeInventory.getQuantity(c); i++) {
+changes.add(c);
+}
+}
+}
+
+return changes;
+}
+
+Does this method work fine?
+
+June 8, 2016 at 7:59 PM
+javin paul said...
+@Duc Nguyen Tien (3), Yes, greedy algorithm is absolutely fine, I haven't tested your code yet, but there are couple of enhancement need to made e.g. getAll() method which should return list of coins.
+
+Also, I didn't understand the call to hasItem()
+
+&& cashInventory.hasItem(inventory.get(i), changeInventory.getQuantity(inventory.get(i)) + 1))
+
+first one look alright but then I think there is typo because hasItem() only accept one parameter. I am not sure what you are checking with changeInventory there.
+
+Please explain
+
+June 9, 2016 at 5:00 AM
+Anonymous said...
+Inventory.getAll() will return list item in inventory
+public List getAll() {
+return new ArrayList(inventory.keySet());
+}
+Inventory.hashItem(T item, quantity) check if there are at least "quantity" item in inventory
+public boolean hasItem(T item, int quantity) {
+return getQuantity(item) >= quantity;
+}
+I just try to fix the problem, you just check if the inventory has coin and dont care about quantity of this coin.
+So every time I pick a coin, I temporaryly put it to a inventory - changeInventory (so i will know how many item i choosed), and I can check if the cash inventory have enough item.
+cashInventory.hasItem(inventory.get(i), changeInventory.getQuantity(inventory.get(i)) + 1))
+
+June 9, 2016 at 10:49 PM
+Rudraraju Varma said...
+One Question here. Should not the Cash Inventory and the Item Inventory be outside of the Vending Machine implementation class. Since Vending machine is a factory instantiation and serves 1 per user, so the cash and item inventory will always be initialized to its default values each time a user is using a vending machine.
+
+June 12, 2016 at 4:28 PM
+javin paul said...
+@Rudraraju, Vending machine is not per user. There supposed to be only one Vending Machine per application. May be you can consider Making Vending Machine Singleton.
+
+June 13, 2016 at 4:48 AM
+Rudraraju Varma said...
+@Javin,
+If The Vending machine is not per user then why do we require Factory class To retrieve the Vending Machine
+
+June 20, 2016 at 1:53 PM
+javin paul said...
+@Rudraraju, Factory pattern is used to encapsulate creation of Vending machine, right now its returning the default implementation but it could return a different type of Vending machine in future.
+
+June 21, 2016 at 4:54 AM
+Unknown said...
+Hi,
+Is this Code Updated
+
+June 24, 2016 at 5:39 AM
+Anonymous said...
+how to run this program
+
+August 17, 2016 at 7:26 AM
+Unknown said...
+import java.util.*;
+
+class Sample
+{
+int total=0;
+public int input(int coins)
+{
+switch(coins)
+{
+case 1:
+total = total +1;
+break;
+case 5:
+total = total + 5;
+break;
+case 10:
+total = total + 10;
+break;
+case 25:
+total = total + 25;
+break;
+case 50:
+total = total + 50;
+break;
+case 100:
+total = total + 100;
+break;
+case 200:
+total = total + 200;
+break;
+default :
+System.out.println("Wrong Input");
+break;
+}
+return 0;
+}
+
+public int select(int choice)
+{
+
+switch(choice)
+{
+case 1:
+System.out.println("You have selected CANDY(10)");
+total = total - 10;
+System.out.println("Your Remaining change: "+total);
+break;
+case 2:
+System.out.println("You have selected SNACK(50)");
+total = total - 50;
+System.out.println("Your Remaining change: "+total);
+break;
+case 3:
+System.out.println("You have selected NUTS(90)");
+total = total - 90;
+System.out.println("Your Remaining change: "+total);
+break;
+case 4:
+System.out.println("You have selected COKE(25)");
+total = total - 25;
+System.out.println("Your Remaining change: "+total);
+break;
+case 5:
+System.out.println("You have selected PEPSI(35)");
+total = total - 35;
+System.out.println("Your Remaining change: "+total);
+break;
+case 6:
+System.out.println("You have selected SODA(45)");
+total = total - 45;
+System.out.println("Your Remaining change: "+total);
+break;
+case 7:
+System.out.println("You have cancelled your Item.");
+total = total - 0;
+System.out.println("Your Remaining change: "+total);
+break;
+case 8:
+Machine.main(null);
+break;
+
+default:
+System.out.println("Wrong Choice");
+
+}
+return 0;
+}
+}
+
+class Machine
+{
+public static void main(String args[])
+{
+Sample sp = new Sample();
+Scanner sc = new Scanner(System.in);
+System.out.println("\t\t\tWelcome to Vending Machine.");
+System.out.println("Put coins in the denomination of: 1,5,10,25,50,100,200");
+int coins = sc.nextInt();
+sp.input(coins);
+System.out.println("Select one of the Items: \n");
+System.out.println("1.CANDY(10)");
+System.out.println("2.SNACK(50)");
+System.out.println("3.NUTS(90)");
+System.out.println("4.COKE(25)");
+System.out.println("5.PEPSI(35)");
+System.out.println("6.SODA(45)");
+System.out.println("7.CANCEL");
+System.out.println("8.RESET");
+int choice = sc.nextInt();
+sp.select(choice);
+
+}
+}
+
+September 4, 2016 at 1:10 AM
+peyali said...
+Hi All,
+
+As per above comments chain there is a issue in getChange() method, which is not considering quantity of coins.Below is my attempt to fix it works for me.
+
+private List getChange(long changeAmount) throws NotSufficientChangeException {
+List changes = Collections.emptyList();
+int CHANGE_PENNY = 0;
+int CHANGE_NICKEL = 0;
+int CHANGE_DIME = 0;
+int CHANGE_QUARTER = 0;
+int CHANGE_DOLLAR = 0;
+if(changeAmount > 0)
+{
+changes = new ArrayList();
+long remaining = changeAmount;
+while (remaining > 0) {
+if (remaining >= Coin.DOLLAR.getCents()
+&& coinsInventory.isInStock(Coin.DOLLAR) && CHANGE_DOLLAR < coinsInventory.getQuantity(Coin.DOLLAR)) {
+changes.add(Coin.DOLLAR);
+remaining = remaining - Coin.DOLLAR.getCents();
+CHANGE_DOLLAR++;
+continue;
+}else if (remaining >= Coin.QUARTER.getCents()
+&& coinsInventory.isInStock(Coin.QUARTER) && CHANGE_QUARTER < coinsInventory.getQuantity(Coin.QUARTER) ) {
+changes.add(Coin.QUARTER);
+remaining = remaining - Coin.QUARTER.getCents();
+CHANGE_QUARTER++;
+continue;
+} else if (remaining >= Coin.DIME.getCents()
+&& coinsInventory.isInStock(Coin.DIME) && CHANGE_DIME < coinsInventory.getQuantity(Coin.DIME)) {
+changes.add(Coin.DIME);
+remaining = remaining - Coin.DIME.getCents();
+CHANGE_DIME++;
+continue;
+} else if (remaining >= Coin.NICKEL.getCents()
+&& coinsInventory.isInStock(Coin.NICKEL) && CHANGE_NICKEL < coinsInventory.getQuantity(Coin.NICKEL)) {
+changes.add(Coin.NICKEL);
+remaining = remaining - Coin.NICKEL.getCents();
+CHANGE_NICKEL++;
+continue;
+} else if (remaining >= Coin.PENNY.getCents()
+&& coinsInventory.isInStock(Coin.PENNY) && CHANGE_PENNY < coinsInventory.getQuantity(Coin.PENNY)) {
+changes.add(Coin.PENNY);
+remaining = remaining - Coin.PENNY.getCents();
+CHANGE_PENNY++;
+continue;
+} else {
+throw new NotSufficientChangeException(
+"Not Sufficient Change, Please try another product");
+}
+}
+
+}
+return changes;
+}
+
+December 15, 2016 at 8:59 PM
+qwerty said...
+shouldn't the reset method reinitialize the inventories rather than clearing it. I mean when i hear reset, it would generally mean at the EOD, the machine's items will be refilled, totalsales will be calculated and reset to 0, and the coin inventory is reinitialized for the next day. If the inventories are reset how is it going to be used again?
+
+March 27, 2017 at 2:06 PM
+qwerty said...
+By the way here's my getChange method:
+public HashMap getChange(long remaining) throws NotSufficientChangeException{
+HashMap coinMap = initializeHashMap();
+long balance = remaining;
+while (balance > 0) {
+if (balance >= Coin.QUARTER.getDenominator() && coinInventory.hasItem(Coin.QUARTER) && coinInventory.getQuantity(Coin.QUARTER) >= balance/Coin.QUARTER.getDenominator()) {
+coinMap.put(Coin.QUARTER,coinMap.get(Coin.QUARTER) == null ? 0 : coinMap.get(Coin.QUARTER)+1);
+balance-=Coin.QUARTER.getDenominator();
+continue;
+} else if (balance >= Coin.DIME.getDenominator() && coinInventory.hasItem(Coin.DIME) && coinInventory.getQuantity(Coin.DIME) >= balance/Coin.DIME.getDenominator()) {
+coinMap.put(Coin.DIME,coinMap.get(Coin.DIME) == null ? 0 : coinMap.get(Coin.DIME)+1);
+balance-=Coin.DIME.getDenominator();
+continue;
+} else if (balance >= Coin.NICKEL.getDenominator() && coinInventory.hasItem(Coin.NICKEL) && coinInventory.getQuantity(Coin.NICKEL) >= balance/Coin.NICKEL.getDenominator()) {
+coinMap.put(Coin.NICKEL,coinMap.get(Coin.NICKEL) == null ? 0 : coinMap.get(Coin.NICKEL)+1);
+balance-=Coin.NICKEL.getDenominator();
+continue;
+} else if (balance > Coin.PENNY.getDenominator() && coinInventory.hasItem(Coin.PENNY) && coinInventory.getQuantity(Coin.PENNY) >= balance/Coin.PENNY.getDenominator()) {
+coinMap.put(Coin.PENNY,coinMap.get(Coin.PENNY) == null ? 1 : coinMap.get(Coin.PENNY)+1);
+balance-=Coin.PENNY.getDenominator();
+continue;
+} else {
+throw new NotSufficientChangeException("Not sufficient Change Exception, please try another product");
+}
+}
+return coinMap;
+}
+
+I have changed List to HashMap everywhere
+
+March 27, 2017 at 2:10 PM
+javin paul said...
+@qwery, very well thought. Yes, reset should behave like this in practice. You can modify reset method accordingly.
+
+March 28, 2017 at 6:15 AM
+Anonymous said...
+I'm no expert, but I don't like how long and complicated the main class (the vending machine itself) is. Shouldn't it have a single responsibility? Why not delegate handling the coins and handling the inventory to separate objects like InventoryManager and Register for example?
+
+June 15, 2017 at 3:27 AM
+javin paul said...
+@Anonymous, , well you can always do refactoring to improve the code. Though I like your suggestion to make main class shorter.
+
+June 15, 2017 at 6:25 AM
+anonym said...
+What if I want to add some more items to inventory ? What changes would you suggest then ?
+
+August 31, 2017 at 2:37 PM
+java tech said...
+please update the latest running code of getChange()
+
+October 2, 2017 at 8:50 AM
+Michal tech said...
+another possible implementation for getChange:
+
+/**
+* @return the list of coins to be returned as change, or null if there is not the right amount of coins
+*/
+private ArrayList checkChange() throws NotSufficientChangeException{
+int changeNeeded = curBalance - curProduct.getCost();
+ArrayList allChange = new ArrayList<>();
+while (changeNeeded > 0){
+if (changeNeeded > Coin.QUARTER.getValue() && allCoins.contains(Coin.QUARTER)){
+allChange.add(Coin.QUARTER); //add to the change
+allCoins.remove(Coin.QUARTER); //remove from all coins
+changeNeeded -= Coin.QUARTER.getValue(); //update the change needed
+}
+else if (changeNeeded > Coin.DIME.getValue() && allCoins.contains(Coin.DIME)){
+allChange.add(Coin.DIME); //add to the change
+allCoins.remove(Coin.DIME); //remove from all coins
+changeNeeded -= Coin.DIME.getValue(); //update the change needed
+}
+else if (changeNeeded > Coin.NICKLE.getValue() && allCoins.contains(Coin.NICKLE)){
+allChange.add(Coin.NICKLE); //add to the change
+allCoins.remove(Coin.NICKLE); //remove from all coins
+changeNeeded -= Coin.NICKLE.getValue(); //update the change needed
+}
+else if (changeNeeded > Coin.PENNY.getValue() && allCoins.contains(Coin.PENNY)){
+allChange.add(Coin.PENNY); //add to the change
+allCoins.remove(Coin.PENNY); //remove from all coins
+changeNeeded -= Coin.PENNY.getValue(); //update the change needed
+}
+else throw new NotSufficientChangeException();
+allCoins.addAll(allChange);
+refund();
+}
+return allChange;
+}
+
+December 24, 2017 at 7:00 AM
+Unknown said...
+Hi Thanks for solution. It's very useful. But, still i'm very much confuse, Firstly I tried by own, I was just adding more and more methods, variables, conditional statements and sitch cases.
+How should I achieve solution approach like your solution(I'm having exp of 1 yr :( ), how can i improve logic implementation.
+
+July 31, 2018 at 11:31 PM
+yakkala1 said...
+I would be using State Pattern for this problem
+
+August 26, 2018 at 2:52 AM
+Unknown said...
+well explained design and implementation!!
+
+August 29, 2018 at 1:29 AM
+Santhosh dk said...
+The better approach would be to use State Design pattern.
+
+November 1, 2018 at 9:38 PM
+javin paul said...
+Indeed, you can implement this solution using State design pattern as well.
+
+November 6, 2018 at 4:57 AM
+Wondering said...
+I was looking a your code for this design,.I noticed that you define classes/methods calling other classes/methods, before defining the called classes/methods. For example you define the Enums after they are used. So I'm wondering if that is your personal preference or is there a reason for doing it this way?
+
+December 30, 2019 at 4:33 PM
+javin paul said...
+It was because I have put all code in one page, in reality they are in different source file, one file per class.
+
+January 2, 2020 at 3:58 AM
+Wondering said...
+I see. How about the method placements with the VendingMachineImpl class? What I am asking here, is that are you grouping methods by functionality or as they are called, or some other system. I would appreciate any elaboration.
+January 2, 2020 at 12:56 PM
+maxim said...
+We have another problem. In some countries there is 3 nominal coins. So suppose our machine has [5, 3 3] for change. This code will not able to give me 6(3+3). It will fail after 5+3
+
+April 2, 2020 at 4:14 PM
+javin paul said...
+That's interesting? how you going to fix that maxim? Do you have solution for your problem?
+
+April 3, 2020 at 5:41 AM
+AbdelkarimLYOUSSI said...
+I agree with you Wondering, the way Paul is coding is not helpful especially for beginners who want to follow with him. Method invocation before its implementation is something that confuses even senior programmers...
+
+June 7, 2020 at 12:21 PM
+javin paul said...
+The key here is to understand how Java program is executed, like the execution starts from main and method is called using objects. If you know that, you won't be trouble, order doesn't matter if your code has compiled fine.
+
+June 8, 2020 at 8:33 AM
+Unknown said...
+Hi
+I havent read throught all the coments, so i don't know wheather its point out already or not, but shouldnt the initialize() method also put items into itemInventory?
+
+August 18, 2020 at 1:29 AM
+javin paul said...
+@Unknown, yes it does that by putting cash and items into respective inventory.
+
+August 29, 2020 at 2:05 AM
+Post a Comment
+
+Newer PostOlder PostHome
+Subscribe to: Post Comments ( Atom )
+
+
+
+VDO.AI
+Follow by Email
+Email address...
+
+
+Interview Questions
+core java interview question (171)
+Coding Interview Question (73)
+data structure and algorithm (73)
+interview questions (57)
+SQL Interview Questions (33)
+object oriented programming (32)
+design patterns (30)
+thread interview questions (30)
+collections interview questions (25)
+spring interview questions (20)
+database interview questions (16)
+servlet interview questions (15)
+Programming interview question (6)
+hibernate interview questions (6)
+
+Best of Javarevisited
+How Spring MVC works internally?
+How to design a vending machine in Java?
+How HashMap works in Java?
+Why String is Immutable in Java?
+10 Articles Every Programmer Must Read
+How to convert lambda expression to method reference in Java 8?
+10 Tips to improve Programming Skill
+10 OOP design principles programmer should know
+How Synchronization works in Java?
+10 tips to work fast in Linux
+5 Books to improve Coding Skills
+
+Java Tutorials
+date and time tutorial (22)
+FIX protocol tutorial (15)
+Java Certification OCPJP SCJP (30)
+java collection tutorial (76)
+java IO tutorial (28)
+Java JSON tutorial (12)
+Java multithreading Tutorials (59)
+Java Programming Tutorials (18)
+Java xml tutorial (16)
+JDBC (30)
+jsp-servlet (37)
+online resources (213)
+
+Followers
+
+Subscribe to Download the E-book
+
+Download
+The E-book
+
+Building a REST API with Spring 4?
+Email address...
+Categories
+courses (196)
+SQL (61)
+database (42)
+linux (40)
+Eclipse (30)
+Java Certification OCPJP SCJP (30)
+JVM Internals (24)
+JQuery (21)
+REST (17)
+Testing (13)
+Maven (12)
+general (12)
+
+Blog Archive
+►  2020 (378)
+►  2019 (77)
+►  2018 (26)
+►  2017 (751)
+▼  2016 (106)
+►  December (12)
+►  November (1)
+►  October (21)
+►  September (14)
+►  August (8)
+►  July (9)
+▼  June (11)
+How to convert java.sql.Date to java.util.Date in ...
+How to make Eclipse use spaces instead of tabs in ...
+10 Examples of Joining String in Java 8 - StringJo...
+Why use Log4j logging vs System.out.println in Java
+How to install Maven on Windows 7,8 or 10?
+Maven Eclipse Error - "No compiler is provided in ...
+How to add Primary key into a new or existing tabl...
+2 Books to Prepare Java EE 6 Web Component Develop...
+How to Remove Duplicate Characters from String in ...
+Java Object Oriented Analysis and Design Problem -...
+Design a Vending Machine in Java - Interview Ques...
+►  May (7)
+►  April (5)
+►  March (6)
+►  February (8)
+►  January (4)
+References
+Oracle's Java Tech Network
+jQuery Documentation
+Microsoft SQL Server Documentation
+Java SE 8 API Documentation
+Spring Documentation
+Oracle's JAva Certification
+Spring Security 5 Documentation
+Pages
+Privacy Policy
+Terms and Conditions
+Copyright by Javin Paul 2010-2018. Powered by Blogger.
+Search This Blog
+Show
+Error: Could not find or load main class in Java [Solved]
+Recommended for you
+Error: Could not find or load main class in Java [Solved]
+javarevisited.blogspot.comAddThis
+
+
+Read more: https://javarevisited.blogspot.com/2016/06/design-vending-machine-in-java.html#ixzz6X8mAk4KS
+
